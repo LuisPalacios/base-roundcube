@@ -83,6 +83,8 @@ if [ ! -f "${ROUNDCUBE_CONFIG_FILE}" ];then
 	chown -R www-data:www-data /var/www/html/*
 	chmod -R 775 /var/www/html/temp
 	chmod -R 775 /var/www/html/logs
+	cp /404.php /var/www/html/
+	rm -fr /var/www/html/installer
 	
 	echo >&2 "He instalado roundcube en /var/www/html"
 	echo >&2 "-----------------------------------------------------------"

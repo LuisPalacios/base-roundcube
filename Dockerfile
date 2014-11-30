@@ -36,7 +36,7 @@ ADD config.inc.php /root/roundcubemail-1.0.3/config/
 # Copia el 404.php
 #
 RUN rm -f /var/www/html/index.html
-ADD 404.php /var/www/html/404.php
+ADD 404.php /
 
 # Ejecutable a arrancar siempre
 #
