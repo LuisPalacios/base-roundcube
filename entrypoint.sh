@@ -107,7 +107,7 @@ fi
 #
 if [ -n "${SERVICE_DB_PASS}" ]; then
 	if [ -f "${ROUNDCUBE_CONFIG_FILE}" ];then 
-   		sed -i "s/^\$config\['db_dsnw'\].*/\$config\['db_dsnw'\] = 'mysql:\/\/${SERVICE_DB_USER}:${SERVICE_DB_PASS}@${mysqlHost}\/roundcube';/g" ${ROUNDCUBE_CONFIG_FILE}
+   		sed -i "s/^\$config\['db_dsnw'\].*/\$config\['db_dsnw'\] = 'mysql:\/\/${SERVICE_DB_USER}:${SERVICE_DB_PASS}@${mysqlHost}:${mysqlPort}\/roundcube';/g" ${ROUNDCUBE_CONFIG_FILE}
    	fi
 fi
 if [ -n "${ROUNDCUBE_IMAP_HOST}" ]; then
