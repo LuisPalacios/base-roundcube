@@ -2,6 +2,7 @@
 
 Este repositorio alberga un *contenedor Docker* para montar RoundCube Mail, está automatizado en el Registry Hub de Docker [luispa/base-roundcube](https://registry.hub.docker.com/u/luispa/base-roundcube/) conectado con el el proyecto en [GitHub base-rouncube](https://github.com/LuisPalacios/base-roundcube)
 
+Consulta este [apunte técnico sobre varios servicios en contenedores Docker](http://www.luispa.com/?p=172) para acceder a otros contenedores Docker y sus fuentes en GitHub.
 
 ## Ficheros
 
