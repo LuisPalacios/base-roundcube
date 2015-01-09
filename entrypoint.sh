@@ -112,7 +112,7 @@ if [ -n "${SERVICE_DB_PASS}" ]; then
 fi
 if [ -n "${ROUNDCUBE_IMAP_HOST}" ]; then
 	if [ -f "${ROUNDCUBE_CONFIG_FILE}" ];then 
-	   sed -i "s/^\$config\['default_host'\].*/\$config\['default_host'\] = 'tls://${ROUNDCUBE_IMAP_HOST}';/g" ${ROUNDCUBE_CONFIG_FILE}
+	   sed -i "s/^\$config\['default_host'\].*/\$config\['default_host'\] = '${ROUNDCUBE_IMAP_HOST}';/g" ${ROUNDCUBE_CONFIG_FILE}
    	fi
 fi
 if [ -n "${ROUNDCUBE_SMTP_HOST}" ]; then
