@@ -19,7 +19,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # script do.sh pueda crear la base de datos 'roundcube' si es que no existe
 #
 RUN apt-get update && \
-	apt-get -y install	mysql-client \
+	apt-get -y install	locales \
+	                    mysql-client \
 						net-tools \
                        	vim \
                        	supervisor \
