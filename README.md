@@ -14,37 +14,34 @@ Consulta este [apunte técnico sobre varios servicios en contenedores Docker](ht
 
 Para usar la imagen desde el registry de docker hub
 
-    totobo ~ $ docker pull luispa/base-rouncube
+    totobo ~ $ docker pull luispa/base-roundcube
 
 
 ## Clonar el repositorio
 
 Este es el comando a ejecutar para clonar el repositorio y poder trabajar con él directamente
 
-    ~ $ clone https://github.com/LuisPalacios/docker-rouncube.git
+    ~ $ clone https://github.com/LuisPalacios/docker-roundcube.git
 
 Luego puedes crear la imagen localmente con el siguiente comando
 
     $ docker build -t luispa/base-roundcube ./
+
 
 # Configuración
 
 
 ## Volúmenes
 
-Es importante que prepares un volumen persistente donde imapfilter espera encontrar su(s) fichero(s) de configuración. En mi caso es el siguiente: 
+Directorio persistente para configurar el Timezone. Crear el directorio /Apps/data/tz y dentro de él crear el fichero timezone. Luego montarlo con -v o con fig.yml
 
-    - /Apps/data/correo/imapfilter/:/root/.imapfilter/
-    
-Dentro de este directorio DEBES CREAR/EDITAR el fichero con los certificados SSL/TLS de tus servidores y además el(los) fichero(s) de configuraicón
-
-	- certificates
-	- config*.lua
-
+    Montar:
+       "/Apps/data/tz:/config/tz"  
+    Preparar: 
+       $ echo "Europe/Madrid" > /config/tz/timezone
 
 ## Variables
 
-`MYSQL_LINK`, `SQL_ROOT_PASSWORD`, `SERVICE_DB_USER`, `SERVICE_DB_PASS`, `SERVICE_DB_NAME`
 
 Las siguientes variables se utilizan para identificar dónde (nombre/IP y puerto) está el servidor MySQL  para poder crear la base de datos Roundcube, o emplear la ya existente.
 
@@ -52,18 +49,9 @@ Las siguientes variables se utilizan para identificar dónde (nombre/IP y puerto
     SQL_ROOT_PASSWORD:   "contraseña_root_en_MySQL"
     SERVICE_DB_USER:     "usuario_roundcube"
     SERVICE_DB_PASS:     "contraseña_usuario_roundcube"
-    SERVICE_DB_NAME:     "nombre_base_de_datos_roundcube"
-    
-Aquí tienes un ejemplo sobre cómo instalarte tu propio servidor MySQL en otro contenedor, échale un vistazo a este proyecto: [servicio-db-correo](https://github.com/LuisPalacios/servicio-db-correo). 
-
-`ROUNDCUBE_SMTP_HOST`, `ROUNDCUBE_IMAP_HOST`,
-
-Estas dos variables permiten al contenedor configurar dónde está el servidor SMTP y el servidor IMAP
-
-    ROUNDCUBE_SMTP_HOST: "tls://<dirección_ip_o_nombre_DNS>"
-    ROUNDCUBE_IMAP_HOST: "tls://<dirección_ip_o_nombre_DNS>:143"
-  
-Aquí tienes un ejemplo sobre cómo instalarte tus propios contenedores con servidores SMTP, IMAP e incluso un "chatarrero" para el spam y los virus, échale un vistazo a este proyecto: [servicio-correo](https://github.com/LuisPalacios/servicio-correo). 
+    SERVICE_DB_NAME:     "nombre_base_de_datos_roundcube" 
+    ROUNDCUBE_SMTP_HOST: "tls://x.x.x.x   Dirección IP del SMTP Host"
+    ROUNDCUBE_IMAP_HOST: "tls://x.x.x.x:143 IP y puerto del IMAP Server"
 
 `FLUENTD_LINK`
 
